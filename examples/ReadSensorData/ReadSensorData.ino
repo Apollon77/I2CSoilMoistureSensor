@@ -20,7 +20,7 @@ void loop() {
   Serial.print("Soil Moisture Capacitance: ");
   Serial.print(sensor.getCapacitance()); //read capacitance register
   Serial.print(", Temperature: ");
-  Serial.print(sensor.getTemperature()); //temperature register
+  Serial.print(sensor.getTemperature()/(float)10); //temperature register
   Serial.print(", Light: ");
   Serial.println(sensor.getLight(true)); //request light measurement, wait and read light register
 }

@@ -42,7 +42,7 @@ class I2CSoilMoistureSensor {
         uint8_t getAddress();
         void startMeasureLight();
         unsigned int getLight(bool wait = false);
-        float getTemperature();
+        int getTemperature();
         void resetSensor();
         uint8_t getVersion();
 
@@ -51,7 +51,8 @@ class I2CSoilMoistureSensor {
 
         void writeI2CRegister8bit(int addr, int value);
         void writeI2CRegister8bit(int addr, int reg, int value);
-        unsigned int readI2CRegister16bit(int addr, int reg);
+        unsigned int readI2CRegister16bitUnsigned(int addr, int reg);
+        int readI2CRegister16bitSigned(int addr, int reg);
         uint8_t readI2CRegister8bit(int addr, int reg);
 };
 

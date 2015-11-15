@@ -60,7 +60,7 @@ void I2CSoilMoistureSensor::begin() {
  * air at 5V supply.                                                    *
  *----------------------------------------------------------------------*/
 unsigned int I2CSoilMoistureSensor::getCapacitance() {
-  return readI2CRegister16bit(sensorAddress, SOILMOISTURESENSOR_GET_CAPACITANCE);
+  return readI2CRegister16bitUnsigned(sensorAddress, SOILMOISTURESENSOR_GET_CAPACITANCE);
 }
 
 /*----------------------------------------------------------------------*
@@ -113,17 +113,17 @@ unsigned int I2CSoilMoistureSensor::getLight(bool wait) {
     startMeasureLight();
     delay(3000);
   }
-  return readI2CRegister16bit(sensorAddress, SOILMOISTURESENSOR_GET_LIGHT);
+  return readI2CRegister16bitUnsigned(sensorAddress, SOILMOISTURESENSOR_GET_LIGHT);
 }
 
 /*----------------------------------------------------------------------*
  * Read the Temperature Measurement. Temperature is measured by the     *
  * thermistor on the tip of the sensor. Calculated absolute measurement *
- * accuracy is better than 2%. The returned value is in degrees Celsius.*                                                         *
+ * accuracy is better than 2%. The returned value is in degrees Celsius *
+ * with factor 10, so need to divide by 10 to get real value            *
  *----------------------------------------------------------------------*/
-float I2CSoilMoistureSensor::getTemperature() {
-  float r = (float)readI2CRegister16bit(sensorAddress, SOILMOISTURESENSOR_GET_TEMPERATURE) / 10;
-  return r;
+int I2CSoilMoistureSensor::getTemperature() {
+  return readI2CRegister16bitSigned(sensorAddress, SOILMOISTURESENSOR_GET_TEMPERATURE);
 }
 
 /*----------------------------------------------------------------------*
@@ -163,15 +163,29 @@ void I2CSoilMoistureSensor::writeI2CRegister8bit(int addr, int reg, int value) {
 }
 
 /*----------------------------------------------------------------------*
- * Helper method to read a 16 bit value from the given register         *
+ * Helper method to read a 16 bit unsigned value from the given register*
  *----------------------------------------------------------------------*/
-unsigned int I2CSoilMoistureSensor::readI2CRegister16bit(int addr, int reg) {
+unsigned int I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, int reg) {
   i2cBeginTransmission(addr);
   i2cWrite(reg);
   i2cEndTransmission();
   delay(20);
   i2cRequestFrom(addr, 2);
   unsigned int t = i2cRead() << 8;
+  t = t | i2cRead();
+  return t;
+}
+
+/*----------------------------------------------------------------------*
+ * Helper method to read a 16 bit signed value from the given register*
+ *----------------------------------------------------------------------*/
+int I2CSoilMoistureSensor::readI2CRegister16bitSigned(int addr, int reg) {
+  i2cBeginTransmission(addr);
+  i2cWrite(reg);
+  i2cEndTransmission();
+  delay(20);
+  i2cRequestFrom(addr, 2);
+  int t = i2cRead() << 8;
   t = t | i2cRead();
   return t;
 }

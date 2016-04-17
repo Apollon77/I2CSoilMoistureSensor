@@ -80,6 +80,16 @@ bool I2CSoilMoistureSensor::setAddress(int addr, bool reset) {
 }
 
 /*----------------------------------------------------------------------*
+ * Change the address (1..127) this instance is trying to read from     *
+ * and do a reset after to initialize.                                  *
+ *----------------------------------------------------------------------*/
+void I2CSoilMoistureSensor::changeAddress(int addr) {
+  sensorAddress=addr;
+  resetSensor();
+  delay(1000);
+}
+
+/*----------------------------------------------------------------------*
  * Return current Address of the Sensor                                 *
  *----------------------------------------------------------------------*/
 uint8_t I2CSoilMoistureSensor::getAddress() {

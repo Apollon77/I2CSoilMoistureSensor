@@ -36,10 +36,10 @@ class I2CSoilMoistureSensor {
     public:
         I2CSoilMoistureSensor(uint8_t addr = SOILMOISTURESENSOR_DEFAULT_ADDR);
 
-		void begin();
+		void begin(bool wait = false);
         unsigned int getCapacitance();
         bool setAddress(int addr, bool reset);
-        void changeAddress(int addr);
+        void changeSensor(int addr, bool wait = false);
         uint8_t getAddress();
         void startMeasureLight();
         unsigned int getLight(bool wait = false);

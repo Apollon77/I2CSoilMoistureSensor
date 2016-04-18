@@ -34,6 +34,12 @@ returns true if the new address is set successfully on sensor.
 ### getAddress()
 Return current Address of the Sensor
 
+### changeSensor(int addr, bool wait)
+Changes the address (1..127) of the sensor, this instance is trying to read from
+and do a reset after to initialize.
+The second parameter is optional and tells the method to wait for a second to allow
+the sensor to boot up.
+
 ### startMeasureLight()
 Starts the measurement for the Light sensor. Wait at least 3 seconds till you call method 
 getLight to get the Light value.                *

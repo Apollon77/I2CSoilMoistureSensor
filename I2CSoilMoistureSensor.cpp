@@ -47,10 +47,18 @@ I2CSoilMoistureSensor::I2CSoilMoistureSensor(uint8_t addr) : sensorAddress(addr)
 }
   
 /*----------------------------------------------------------------------*
- * Initializes anything ... it does a reset only at the moment          *
+ * Initializes anything ... it does a reset.                            *
+ * When used without parameter or parameter value is false then a       *
+ * waiting time of at least 1 second is expected to give the sensor     *
+ * some time to boot up.                                                *
+ * Alternatively use true as parameter and the method waits for a       *
+ * second and returns after that.                                       *
  *----------------------------------------------------------------------*/
-void I2CSoilMoistureSensor::begin() {
+void I2CSoilMoistureSensor::begin(bool wait) {
   resetSensor();
+  if (wait) {
+    delay(1000);
+  }
 }
 
 /*----------------------------------------------------------------------*
@@ -72,11 +80,19 @@ unsigned int I2CSoilMoistureSensor::getCapacitance() {
 bool I2CSoilMoistureSensor::setAddress(int addr, bool reset) {
   writeI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_SET_ADDRESS, addr);
   if (reset) {
-    resetSensor();
-    delay(1000);
+	begin(1);
   }
   sensorAddress=addr;
   return (readI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_GET_ADDRESS) == addr);
+}
+
+/*----------------------------------------------------------------------*
+ * Change the address (1..127) this instance is trying to read from     *
+ * and do a reset after to initialize.                                  *
+ *----------------------------------------------------------------------*/
+void I2CSoilMoistureSensor::changeSensor(int addr, bool wait) {
+  sensorAddress=addr;
+  begin(wait);
 }
 
 /*----------------------------------------------------------------------*

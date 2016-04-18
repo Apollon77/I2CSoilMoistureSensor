@@ -49,7 +49,7 @@ I2CSoilMoistureSensor::I2CSoilMoistureSensor(uint8_t addr) : sensorAddress(addr)
 /*----------------------------------------------------------------------*
  * Initializes anything ... it does a reset.                            *
  * When used without parameter or parameter value is false then a       *
- *  waiting time of at least 3 seconds is expected to give the sensor   *
+ * waiting time of at least 1 second is expected to give the sensor     *
  * some time to boot up.                                                *
  * Alternatively use true as parameter and the method waits for a       *
  * second and returns after that.                                       *

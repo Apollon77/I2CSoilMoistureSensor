@@ -13,8 +13,13 @@ More informations at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-s
 Optionally set sensor I2C address if different from default
 
 
-### begin()
-Initializes anything ... it does a reset only at the moment
+### begin(bool wait)
+Initializes anything ... it does a reset.
+When used without parameter or parameter value is false then a
+waiting time of at least 1 second is expected to give the sensor
+some time to boot up.
+Alternatively use true as parameter and the method waits for a
+second and returns after that.
 
 ### getCapacitance()
 Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will 

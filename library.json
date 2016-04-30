@@ -13,7 +13,7 @@
     "repository":
     {
         "type": "git",
-        "url": "https://raw.githubusercontent.com/DigitalGrowControl/I2CSoilMoistureSensor/master/library.json"
+        "url": "https://github.com/Apollon77/I2CSoilMoistureSensor.git"
     },
     "frameworks": "arduino",
     "platforms": "atmelavr"

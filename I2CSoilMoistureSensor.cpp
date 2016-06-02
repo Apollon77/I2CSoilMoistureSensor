@@ -169,7 +169,7 @@ void I2CSoilMoistureSensor::sleep() {
  * Check if sensor is busy. Returns true if a measurement is running.   *
  *----------------------------------------------------------------------*/
 bool I2CSoilMoistureSensor::isBusy() {
-  return readI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_GET_BUSY);
+  return (readI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_GET_BUSY) == 1);
 }
 
 /*----------------------------------------------------------------------*

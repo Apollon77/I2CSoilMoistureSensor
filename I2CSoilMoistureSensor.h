@@ -30,6 +30,8 @@
 #define SOILMOISTURESENSOR_GET_TEMPERATURE	0x05 //	(r) 	2 bytes
 #define SOILMOISTURESENSOR_RESET 			0x06 //	(w) 	n/a
 #define SOILMOISTURESENSOR_GET_VERSION 		0x07 //	(r) 	1 bytes
+#define SOILMOISTURESENSOR_SLEEP	        0x08 // (w)     n/a
+#define SOILMOISTURESENSOR_GET_BUSY	        0x09 // (r)	    1 bytes
 
 
 class I2CSoilMoistureSensor {
@@ -46,6 +48,8 @@ class I2CSoilMoistureSensor {
         int getTemperature();
         void resetSensor();
         uint8_t getVersion();
+        void sleep();
+        bool isBusy();
 
     private:
 		int sensorAddress;

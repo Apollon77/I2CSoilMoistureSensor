@@ -152,12 +152,25 @@ void I2CSoilMoistureSensor::resetSensor() {
 }
 
 /*----------------------------------------------------------------------*
- * Get Firmware Version. 0x22 means 2.2                                  *
+ * Get Firmware Version. 0x22 means 2.2                                 *
  *----------------------------------------------------------------------*/
 uint8_t I2CSoilMoistureSensor::getVersion() {
   return readI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_GET_VERSION);
 }
 
+/*----------------------------------------------------------------------*
+ * Sleep sensor. Initiates SLEEP_MODE_PWR_DOWN in the sensor's MCU.     *
+ *----------------------------------------------------------------------*/
+void I2CSoilMoistureSensor::sleep() {
+  writeI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_SLEEP);
+}
+
+/*----------------------------------------------------------------------*
+ * Check if sensor is busy. Returns true if a measurement is running.   *
+ *----------------------------------------------------------------------*/
+bool I2CSoilMoistureSensor::isBusy() {
+  return (readI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_GET_BUSY) == 1);
+}
 
 /*----------------------------------------------------------------------*
  * Helper method to write an 8 bit value to the sensor via I2C          *

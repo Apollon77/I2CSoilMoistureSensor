@@ -62,6 +62,12 @@ Read the Temperature Measurement. Temperature is measured by the thermistor on t
 the sensor. Calculated absolute measurement accuracy is better than 2%. The returned value 
 is in degrees Celsius with factor 10, so need to divide by 10 to get real value
 
+### sleep()
+Powers down the sensor. Use this function in order to save power inbetween measurements.
+
+### isBusy()
+Checks if sensor is busy. Returns true if a measurement is running. 
+
 ### resetSensor()
 Resets sensor. Give the sensor 0.5-1 second time to boot up after reset.
 

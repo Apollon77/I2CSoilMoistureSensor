@@ -7,6 +7,16 @@ use with I2C.
 ## Informations
 More informations at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
 
+## Version History
+
+### v1.1.0
+- Added PlatformIO registration files (thanks to @DigitalGrowControl)
+- Added added method changeSensor() to allow to talk to multiple sensors with one instance of the class (thanks to @elzoido)
+- Added methods sleep() and isBusy() which are available beginning with FW 2.3 (thanks to @sekdiy)
+
+### v1.0.0
+- Initial Release
+
 ## Methods
 
 ### Constructor I2CSoilMoistureSensor
@@ -64,9 +74,11 @@ is in degrees Celsius with factor 10, so need to divide by 10 to get real value
 
 ### sleep()
 Powers down the sensor. Use this function in order to save power inbetween measurements.
+You need to have FW 2.3 from the Sensor to use this method.
 
 ### isBusy()
 Checks if sensor is busy. Returns true if a measurement is running. 
+You need to have FW 2.3 from the Sensor to use this method.
 
 ### resetSensor()
 Resets sensor. Give the sensor 0.5-1 second time to boot up after reset.

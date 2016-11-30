@@ -4,9 +4,9 @@
 I2CSoilMoistureSensor sensor(0x20);
 
 void setup() {
-  Wire.begin();
+  Wire.begins();
   Serial.begin(9600);
-  
+
   sensor.begin(); // reset sensor
   delay(1000); // give some time to boot up
   Serial.print("I2C Soil Moisture Sensor Address: ");
@@ -18,12 +18,12 @@ void setup() {
   Serial.print("Change address to 0x21 ...");
   if (sensor.setAddress(0x21,true)) // set Sensor Address to 0x21 and reset
     Serial.println("... DONE");
-  else 
+  else
     Serial.println("... ERROR");
   Serial.println();
 }
 
-/*loop scans I2C bus and displays foud addresses*/ 
+/*loop scans I2C bus and displays foud addresses*/
 void loop() {
   byte error, address;
   int nDevices;
@@ -52,7 +52,7 @@ void loop() {
       if (address<16)
         Serial.print("0");
       Serial.println(address,HEX);
-    }    
+    }
   }
   if (nDevices == 0)
     Serial.println("No I2C devices found\n");

@@ -4,7 +4,7 @@
 I2CSoilMoistureSensor sensor(0x20);
 
 void setup() {
-  Wire.begins();
+  Wire.begin();
   Serial.begin(9600);
 
   sensor.begin(); // reset sensor

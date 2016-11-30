@@ -18,11 +18,6 @@ script:
   - arduino --verify --board ${BOARD} $PWD/examples/ChangeSensorI2CAddress/ChangeSensorI2CAddress.ino
   - arduino --verify --board ${BOARD} $PWD/examples/ReadSensorData/ReadSensorData.ino
 
-notifications:
-  email:
-    on_success: change
-    on_failure: change
-
 env:
  - ARDUINO_IDE_VERSION=1.6.5 BOARD=arduino:avr:uno
  - ARDUINO_IDE_VERSION=1.6.10 BOARD=arduino:avr:uno

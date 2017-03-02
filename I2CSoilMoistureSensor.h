@@ -56,8 +56,8 @@ class I2CSoilMoistureSensor {
 
         void writeI2CRegister8bit(int addr, int value);
         void writeI2CRegister8bit(int addr, int reg, int value);
-        unsigned int readI2CRegister16bitUnsigned(int addr, int reg);
-        int readI2CRegister16bitSigned(int addr, int reg);
+        uint16_t readI2CRegister16bitUnsigned(int addr, byte reg);
+        int16_t readI2CRegister16bitSigned(int addr, byte reg);
         uint8_t readI2CRegister8bit(int addr, int reg);
 };
 

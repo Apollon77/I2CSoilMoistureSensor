@@ -195,29 +195,27 @@ void I2CSoilMoistureSensor::writeI2CRegister8bit(int addr, int reg, int value) {
 /*----------------------------------------------------------------------*
  * Helper method to read a 16 bit unsigned value from the given register*
  *----------------------------------------------------------------------*/
-unsigned int I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, int reg) {
-  i2cBeginTransmission(addr);
-  i2cWrite(reg);
+uint16_t I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, byte reg)
+{
+  uint16_t value;
+
+  i2cBeginTransmission((uint8_t)addr);
+  i2cWrite((uint8_t)reg);
   i2cEndTransmission();
   delay(20);
-  i2cRequestFrom(addr, 2);
-  unsigned int t = i2cRead() << 8;
-  t = t | i2cRead();
-  return t;
+  i2cRequestFrom((uint8_t)addr, (byte)2);
+  value = (i2cRead() << 8) | i2cRead();
+  i2cEndTransmission();
+
+  return value;
 }
 
 /*----------------------------------------------------------------------*
  * Helper method to read a 16 bit signed value from the given register*
  *----------------------------------------------------------------------*/
-int I2CSoilMoistureSensor::readI2CRegister16bitSigned(int addr, int reg) {
-  i2cBeginTransmission(addr);
-  i2cWrite(reg);
-  i2cEndTransmission();
-  delay(20);
-  i2cRequestFrom(addr, 2);
-  int t = i2cRead() << 8;
-  t = t | i2cRead();
-  return t;
+int16_t I2CSoilMoistureSensor::readI2CRegister16bitSigned(int addr, byte reg)
+{
+  return (int16_t)readI2CRegister16bitUnsigned(addr, reg);
 }
 
 /*----------------------------------------------------------------------*

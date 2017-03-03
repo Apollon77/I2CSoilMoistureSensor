@@ -1,13 +1,16 @@
 # I2CSoilMoistureSensor
 
-Simple Arduino Library for the I2C Soil Moisture Sensor version from Chirp 
-(https://github.com/Miceuz/i2c-moisture-sensor) which works really great and is ready to 
+Simple Arduino Library for the I2C Soil Moisture Sensor version from Chirp
+(https://github.com/Miceuz/i2c-moisture-sensor) which works really great and is ready to
 use with I2C.
 
 ## Informations
 More informations at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
 
 ## Version History
+
+### v1.1.2
+-  changed/fixed handling of negative temperature values (thanks to @krikk)
 
 ### v1.1.0
 - Added PlatformIO registration files (thanks to @DigitalGrowControl)
@@ -32,13 +35,13 @@ Alternatively use true as parameter and the method waits for a
 second and returns after that.
 
 ### getCapacitance()
-Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will 
-give you higher reading. Normally all sensors give about 200 - 300 as value in free air at 
+Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will
+give you higher reading. Normally all sensors give about 200 - 300 as value in free air at
 5V supply.
 
 ### setAddress(int addr, bool reset)
-Change I2C address of the sensor to the provided address (1..127) and do a reset after it 
-in order for the new address to become effective if second parameter is true. Method 
+Change I2C address of the sensor to the provided address (1..127) and do a reset after it
+in order for the new address to become effective if second parameter is true. Method
 returns true if the new address is set successfully on sensor.
 
 ### getAddress()
@@ -51,25 +54,25 @@ The second parameter is optional and tells the method to wait for a second to al
 the sensor to boot up.
 
 ### startMeasureLight()
-Starts the measurement for the Light sensor. Wait at least 3 seconds till you call method 
+Starts the measurement for the Light sensor. Wait at least 3 seconds till you call method
 getLight to get the Light value.                *
 
 ### getLight(bool wait)
-Read the Light Measurement from the sensor. When used without parameter or parameter value 
-is false then a former call to method startMeasureLight and a waiting time of at least 3 
+Read the Light Measurement from the sensor. When used without parameter or parameter value
+is false then a former call to method startMeasureLight and a waiting time of at least 3
 seconds is expected.
 
-Alternatively use true as parameter and the method does the call to startMeasureLight and 
+Alternatively use true as parameter and the method does the call to startMeasureLight and
 a 3 seconds delay automatically and no former call is needed.
 
-The measurement gives 65535 in a dark room away form desk lamp - so more light, lower 
-reading. When it's dark, it takes longer to measure light, reading the light register 
-while measurement is in progress (e.g. wait time too short) will return the previous 
+The measurement gives 65535 in a dark room away form desk lamp - so more light, lower
+reading. When it's dark, it takes longer to measure light, reading the light register
+while measurement is in progress (e.g. wait time too short) will return the previous
 reading. Be aware, light sensor is pretty noisy.
 
 ### getTemperature()
-Read the Temperature Measurement. Temperature is measured by the thermistor on the tip of 
-the sensor. Calculated absolute measurement accuracy is better than 2%. The returned value 
+Read the Temperature Measurement. Temperature is measured by the thermistor on the tip of
+the sensor. Calculated absolute measurement accuracy is better than 2%. The returned value
 is in degrees Celsius with factor 10, so need to divide by 10 to get real value
 
 ### sleep()
@@ -77,7 +80,7 @@ Powers down the sensor. Use this function in order to save power inbetween measu
 You need to have FW 2.3 from the Sensor to use this method.
 
 ### isBusy()
-Checks if sensor is busy. Returns true if a measurement is running. 
+Checks if sensor is busy. Returns true if a measurement is running.
 You need to have FW 2.3 from the Sensor to use this method.
 
 ### resetSensor()

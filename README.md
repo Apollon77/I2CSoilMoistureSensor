@@ -20,6 +20,9 @@ More informations at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-s
 ### v1.0.0
 - Initial Release
 
+## Notes/Hints
+For ESP8266 it seems to be necessary to use ***Wire.setClockStretchLimit(2500);*** after initializing the Wire instance to make sure the I2C timing works especially in sleep cases (see https://github.com/Apollon77/I2CSoilMoistureSensor/issues/8 for more details and the discussion).
+
 ## Methods
 
 ### Constructor I2CSoilMoistureSensor

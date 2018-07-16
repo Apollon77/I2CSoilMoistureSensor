@@ -79,6 +79,7 @@ unsigned int I2CSoilMoistureSensor::getCapacitance() {
  *----------------------------------------------------------------------*/
 bool I2CSoilMoistureSensor::setAddress(int addr, bool reset) {
   writeI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_SET_ADDRESS, addr);
+  writeI2CRegister8bit(sensorAddress, SOILMOISTURESENSOR_SET_ADDRESS, addr);
   if (reset) {
 	resetSensor();
     delay(1000);

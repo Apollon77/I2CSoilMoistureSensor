@@ -206,7 +206,6 @@ uint16_t I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, byte reg)
   delay(20);
   i2cRequestFrom((uint8_t)addr, (byte)2);
   value = (i2cRead() << 8) | i2cRead();
-  i2cEndTransmission();
 
   return value;
 }

@@ -22,24 +22,25 @@ env:
  - ARDUINO_IDE_VERSION=1.6.5 BOARD=arduino:avr:uno
  - ARDUINO_IDE_VERSION=1.6.10 BOARD=arduino:avr:uno
  - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:uno
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:yun
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:diecimila:cpu=atmega168
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:diecimila:cpu=atmega328
- - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:nano:cpu=atmega168
- - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:nano:cpu=atmega328
- - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:mega:cpu=atmega1280
- - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:mega:cpu=atmega2560
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:megaADK
- - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:leonardo
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:micro
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:esplora
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:mini:cpu=atmega168
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:mini:cpu=atmega328
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:ethernet
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:bt:cpu=atmega168
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:bt:cpu=atmega328
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:lilypad:cpu=atmega168
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:lilypad:cpu=atmega328
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:pro:cpu=atmega168
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:avr:pro:cpu=atmega328
-# - ARDUINO_IDE_VERSION=1.6.13 BOARD=arduino:sam:arduino_due_x
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:uno
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:yun
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:diecimila:cpu=atmega168
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:diecimila:cpu=atmega328
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:nano:cpu=atmega168
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:nano:cpu=atmega328
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:mega:cpu=atmega1280
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:mega:cpu=atmega2560
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:megaADK
+ - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:leonardo
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:micro
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:esplora
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:mini:cpu=atmega168
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:mini:cpu=atmega328
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:ethernet
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:bt:cpu=atmega168
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:bt:cpu=atmega328
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:lilypad:cpu=atmega168
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:lilypad:cpu=atmega328
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:pro:cpu=atmega168
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:avr:pro:cpu=atmega328
+# - ARDUINO_IDE_VERSION=1.8.7 BOARD=arduino:sam:arduino_due_x

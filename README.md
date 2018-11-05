@@ -9,10 +9,10 @@ More informations at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-s
 
 ## Version History
 
-### v1.1.3
+### v1.1.4
 -  updated the change address protocol to be compatible with firmware version 2.6 and later.
 
-### v1.1.2
+### v1.1.2/3
 -  changed/fixed handling of negative temperature values (thanks to @krikk)
 
 ### v1.1.0

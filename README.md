@@ -1,13 +1,16 @@
 # I2CSoilMoistureSensor
 
-Simple Arduino Library for the I2C Soil Moisture Sensor version from Chirp
-(https://github.com/Miceuz/i2c-moisture-sensor) which works really great and is ready to
+Simple Arduino Library for both the standalone I2C Soil Moisture Sensor and "full" version from Chirp
+(https://github.com/Miceuz/i2c-moisture-sensor and https://github.com/Miceuz/PlantWateringAlarm) which works really great and is ready to
 use with I2C.
 
 ## Information
-More information at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
+More information at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/ and https://www.tindie.com/products/miceuz/chirp-plant-watering-alarm/
 
 ## Version History
+
+### vx.x.x
+- Added options to work with the "full" version from Chirp.
 
 ### v1.1.4
 -  updated the change address protocol to be compatible with firmware version 2.6 and later.
@@ -34,11 +37,11 @@ Optionally set sensor I2C address if different from default
 
 ### begin(bool wait, bool readSlowOption)
 Initializes anything ... it does a reset.
-Parameter One, when used without parameter or parameter value is false then a
+First parameter when used without parameter or parameter value is false then a
 waiting time of at least 1 second is expected to give the sensor
 some time to boot up. Alternatively use true as parameter and the method waits for a
 second and returns after that.
-The second parameter is optional, when set to true tells the I2C reads to run slower as required to work with the "full" chirp version,    can be set to faluse to work with the "sensor mode only" version (without the chirp function).
+The second parameter is optional, when set true tells the I2C reads to run slower as required to work with the "full" chirp version,    can be set to false to work with the standalone "sensor mode only" version (without the chirp function).
 
 ### getCapacitance()
 Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will

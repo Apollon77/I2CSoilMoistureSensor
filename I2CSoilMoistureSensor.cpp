@@ -38,6 +38,7 @@
 #define i2cWrite Wire.send
 #endif
 
+int readslow = 20
 /*----------------------------------------------------------------------*
  * Constructor.                                                         *
  * Optionally set sensor I2C address if different from default          *
@@ -54,10 +55,13 @@ I2CSoilMoistureSensor::I2CSoilMoistureSensor(uint8_t addr) : sensorAddress(addr)
  * Alternatively use true as parameter and the method waits for a       *
  * second and returns after that.                                       *
  *----------------------------------------------------------------------*/
-void I2CSoilMoistureSensor::begin(bool wait) {
+void I2CSoilMoistureSensor::begin(bool wait, bool readslowbool) {
   resetSensor();
   if (wait) {
     delay(1000);
+  }
+  if (readslowbool) {
+    readslow = 1100;
   }
 }
 
@@ -203,7 +207,7 @@ uint16_t I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, byte reg)
   i2cBeginTransmission((uint8_t)addr);
   i2cWrite((uint8_t)reg);
   i2cEndTransmission();
-  delay(20);
+  delay(readslow);
   i2cRequestFrom((uint8_t)addr, (byte)2);
   value = (i2cRead() << 8) | i2cRead();
 
@@ -225,7 +229,7 @@ uint8_t I2CSoilMoistureSensor::readI2CRegister8bit(int addr, int reg) {
   i2cBeginTransmission(addr);
   i2cWrite(reg);
   i2cEndTransmission();
-  delay(20);
+  delay(readslow);
   i2cRequestFrom(addr, 1);
   return i2cRead();
 }

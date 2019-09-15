@@ -5,7 +5,10 @@ Simple Arduino Library for both the standalone I2C Soil Moisture Sensor and "ful
 use with I2C.
 
 ## Information
-More information at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/ and https://www.tindie.com/products/miceuz/chirp-plant-watering-alarm/
+More information at: 
+- https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
+- https://www.tindie.com/products/miceuz/chirp-plant-watering-alarm/
+- https://wemakethings.net/chirp/
 
 ## Version History
 

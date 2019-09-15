@@ -32,13 +32,13 @@ For ESP8266 it seems to be necessary to use ***Wire.setClockStretchLimit(2500);*
 Optionally set sensor I2C address if different from default
 
 
-### begin(bool wait)
+### begin(bool wait, bool readSlowOption)
 Initializes anything ... it does a reset.
-When used without parameter or parameter value is false then a
+Parameter One, when used without parameter or parameter value is false then a
 waiting time of at least 1 second is expected to give the sensor
-some time to boot up.
-Alternatively use true as parameter and the method waits for a
+some time to boot up. Alternatively use true as parameter and the method waits for a
 second and returns after that.
+The second parameter is optional, when set to true tells the I2C reads to run slower as required to work with the "full" chirp version,    can be set to faluse to work with the "sensor mode only" version (without the chirp function).
 
 ### getCapacitance()
 Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will

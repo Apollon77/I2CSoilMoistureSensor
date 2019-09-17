@@ -1,6 +1,6 @@
 # I2CSoilMoistureSensor
 
-Simple Arduino Library for both the standalone I2C Soil Moisture Sensor and "full" 'Chirp! - plant watering alarm' version from Chirp
+Simple Arduino Library for both the standalone I2C Soil Moisture Sensor and "full" 'Chirp! - plant watering alarm' version from 
 (https://github.com/Miceuz/i2c-moisture-sensor and https://github.com/Miceuz/PlantWateringAlarm) which works really great and is ready to
 use with I2C.
 
@@ -85,7 +85,8 @@ reading. Be aware, light sensor is pretty noisy.
 ### getTemperature()
 Read the Temperature Measurement. Temperature is measured by the thermistor on the tip of
 the sensor. Calculated absolute measurement accuracy is better than 2%. The returned value
-is in degrees Celsius with factor 10, so need to divide by 10 to get real value
+is in degrees Celsius with factor 10, so need to divide by 10 to get real value.
+Note: The 'Chirp! - plant watering alarm' version is without a thermistor, so cannot report the temperature.
 
 ### sleep()
 Powers down the sensor. Use this function in order to save power inbetween measurements.

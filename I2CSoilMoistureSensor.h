@@ -7,15 +7,15 @@
  * https://github.com/Apollon77/I2CSoilMoistureSensor                   *
  *                                                                      *
  * MIT license                                                          *
- *----------------------------------------------------------------------*/ 
+ *----------------------------------------------------------------------*/
 
 #ifndef I2CSOILMOISTURESENSOR_H
 #define I2CSOILMOISTURESENSOR_H
 
 #if defined(ARDUINO) && ARDUINO >= 100
-#include <Arduino.h> 
+#include <Arduino.h>
 #else
-#include <WProgram.h> 
+#include <WProgram.h>
 #endif
 
 //Default I2C Address of the sensor
@@ -38,7 +38,7 @@ class I2CSoilMoistureSensor {
     public:
         I2CSoilMoistureSensor(uint8_t addr = SOILMOISTURESENSOR_DEFAULT_ADDR);
 
-		void begin(bool wait = false);
+		void begin(bool wait = false, bool readslowbool = false);
         unsigned int getCapacitance();
         bool setAddress(int addr, bool reset);
         void changeSensor(int addr, bool wait = false);

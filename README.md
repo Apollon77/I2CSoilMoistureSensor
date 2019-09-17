@@ -1,13 +1,19 @@
 # I2CSoilMoistureSensor
 
-Simple Arduino Library for the I2C Soil Moisture Sensor version from Chirp
-(https://github.com/Miceuz/i2c-moisture-sensor) which works really great and is ready to
+Simple Arduino Library for both the standalone I2C Soil Moisture Sensor and "full" 'Chirp! - plant watering alarm' version from 
+(https://github.com/Miceuz/i2c-moisture-sensor and https://github.com/Miceuz/PlantWateringAlarm) which works really great and is ready to
 use with I2C.
 
 ## Information
-More information at: https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
+More information at: 
+- https://www.tindie.com/products/miceuz/i2c-soil-moisture-sensor/
+- https://www.tindie.com/products/miceuz/chirp-plant-watering-alarm/
+- https://wemakethings.net/chirp/
 
 ## Version History
+
+### vx.x.x
+- Added options to work with the "full" version from Chirp.
 
 ### v1.1.4
 -  updated the change address protocol to be compatible with firmware version 2.6 and later.
@@ -32,13 +38,13 @@ For ESP8266 it seems to be necessary to use ***Wire.setClockStretchLimit(2500);*
 Optionally set sensor I2C address if different from default
 
 
-### begin(bool wait)
+### begin(bool wait, bool readSlowOption)
 Initializes anything ... it does a reset.
-When used without parameter or parameter value is false then a
+First parameter when used without parameter or parameter value is false then a
 waiting time of at least 1 second is expected to give the sensor
-some time to boot up.
-Alternatively use true as parameter and the method waits for a
+some time to boot up. Alternatively use true as parameter and the method waits for a
 second and returns after that.
+The second parameter is optional, when set true tells the I2C reads to run slower as required to work with the "full" chirp version,    can be set to false to work with the standalone "sensor mode only" version (without the chirp function).
 
 ### getCapacitance()
 Return measured Soil Moisture Capacitance Moisture is somewhat linear. More moisture will
@@ -79,7 +85,8 @@ reading. Be aware, light sensor is pretty noisy.
 ### getTemperature()
 Read the Temperature Measurement. Temperature is measured by the thermistor on the tip of
 the sensor. Calculated absolute measurement accuracy is better than 2%. The returned value
-is in degrees Celsius with factor 10, so need to divide by 10 to get real value
+is in degrees Celsius with factor 10, so need to divide by 10 to get real value.
+Note: The 'Chirp! - plant watering alarm' version is without a thermistor, so cannot report the temperature.
 
 ### sleep()
 Powers down the sensor. Use this function in order to save power inbetween measurements.

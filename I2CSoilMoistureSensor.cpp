@@ -7,7 +7,7 @@
  * https://github.com/Apollon77/I2CSoilMoistureSensor                   *
  *                                                                      *
  * MIT license                                                          *
- *----------------------------------------------------------------------*/ 
+ *----------------------------------------------------------------------*/
 
 #include "I2CSoilMoistureSensor.h"
 
@@ -38,6 +38,9 @@
 #define i2cWrite Wire.send
 #endif
 
+int readSlowDelay = 20;
+int measureLightDelay = 3000;
+
 /*----------------------------------------------------------------------*
  * Constructor.                                                         *
  * Optionally set sensor I2C address if different from default          *
@@ -45,7 +48,7 @@
 I2CSoilMoistureSensor::I2CSoilMoistureSensor(uint8_t addr) : sensorAddress(addr) {
   // nothing to do ... Wire.begin needs to be put outside of class
 }
-  
+
 /*----------------------------------------------------------------------*
  * Initializes anything ... it does a reset.                            *
  * When used without parameter or parameter value is false then a       *
@@ -54,17 +57,21 @@ I2CSoilMoistureSensor::I2CSoilMoistureSensor(uint8_t addr) : sensorAddress(addr)
  * Alternatively use true as parameter and the method waits for a       *
  * second and returns after that.                                       *
  *----------------------------------------------------------------------*/
-void I2CSoilMoistureSensor::begin(bool wait) {
+void I2CSoilMoistureSensor::begin(bool wait, bool readSlowOption) {
   resetSensor();
   if (wait) {
     delay(1000);
+  }
+  if (readSlowOption) {
+    readSlowDelay = 1100;
+    measureLightDelay = 9000;
   }
 }
 
 /*----------------------------------------------------------------------*
  * Return measured Soil Moisture Capacitance                            *
  * Moisture is somewhat linear. More moisture will give you higher      *
- * reading. Normally all sensors give about 290 - 310 as value in free  * 
+ * reading. Normally all sensors give about 290 - 310 as value in free  *
  * air at 5V supply.                                                    *
  *----------------------------------------------------------------------*/
 unsigned int I2CSoilMoistureSensor::getCapacitance() {
@@ -129,7 +136,7 @@ void I2CSoilMoistureSensor::startMeasureLight() {
 unsigned int I2CSoilMoistureSensor::getLight(bool wait) {
   if (wait) {
     startMeasureLight();
-    delay(3000);
+    delay(measureLightDelay);
   }
   return readI2CRegister16bitUnsigned(sensorAddress, SOILMOISTURESENSOR_GET_LIGHT);
 }
@@ -203,7 +210,7 @@ uint16_t I2CSoilMoistureSensor::readI2CRegister16bitUnsigned(int addr, byte reg)
   i2cBeginTransmission((uint8_t)addr);
   i2cWrite((uint8_t)reg);
   i2cEndTransmission();
-  delay(20);
+  delay(readSlowDelay);
   i2cRequestFrom((uint8_t)addr, (byte)2);
   value = (i2cRead() << 8) | i2cRead();
 
@@ -225,7 +232,7 @@ uint8_t I2CSoilMoistureSensor::readI2CRegister8bit(int addr, int reg) {
   i2cBeginTransmission(addr);
   i2cWrite(reg);
   i2cEndTransmission();
-  delay(20);
+  delay(readSlowDelay);
   i2cRequestFrom(addr, 1);
   return i2cRead();
 }
